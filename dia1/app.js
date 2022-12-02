@@ -15,11 +15,11 @@ console.log(wrapped)
 function wrapping(array) {
     let paper = '*';
     let gifts = new Array();
-    for (let i = 0; i < array.length; i++) {
-        const gift = array[i];
+    array.forEach(element => {
+        const gift = element;
         let paperUpDownLong = gift.length + 2;
         let wrappedObject = paper.repeat(paperUpDownLong) + '\n' + paper + gift + paper + '\n' + paper.repeat(paperUpDownLong);
         gifts.push(wrappedObject);
-    }
+    });
     return gifts;
 }
