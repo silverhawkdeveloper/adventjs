@@ -1,21 +1,27 @@
-const cubeOfOne = createCube(1);
-const cubeOfTwo = createCube(2);
+//const cubeOfOne = createCube(1);
+//const cubeOfTwo = createCube(2);
 const cubeOfTree = createCube(3);
 
-
 function createCube(size) {
-    const pieza1 = "/";
-    const pieza2 = "\\";
-    const pieza3 = "_";
-    
-    console.log(pieza1+pieza2+pieza3+pieza2);
-    console.log(pieza2+pieza1+pieza3+pieza1);
+    let cubo = '';
+    const espacio = ' ';
+    const salto = '\n';
+    //Bucle superior
+    const piezaVsup = "/\\";
+    const piezaLsup = "_\\";
+    for (let i = 1; i <= size; i++) {
+        cubo += espacio.repeat(size - i) + piezaVsup.repeat(i) + piezaLsup.repeat(size) + salto;
+    }
 
-    console.log(' '+pieza1+pieza2+pieza3+pieza2+pieza3+pieza2);
-    console.log(pieza1+pieza2+pieza1+pieza2+pieza3+pieza2+pieza3+pieza2);
-    console.log(pieza2+pieza1+pieza2+pieza1+pieza3+pieza1+pieza3+pieza1);
-    console.log(' '+pieza2+pieza1+pieza3+pieza1+pieza3+pieza1);
-    return ''
+    //Bucle inferior
+    const piezaVinf = "\\/";
+    const piezaLinf = "_/";
+    for (let i = 0; i < size; i++) {
+        cubo += espacio.repeat(i) + piezaVinf.repeat(size-i) + piezaLinf.repeat(size);
+        if (i < size-1 ) cubo += salto;
+    }
+    console.log(cubo);
+    return cubo;
 }
 
 /**
@@ -31,7 +37,7 @@ function createCube(size) {
  */
 
 /**
- *   /\_\_\_\  2
+ *   /\_\_\_\  2 
  *  /\/\_\_\_\ 1
  * /\/\/\_\_\_\
  * \/\/\/_/_/_/
